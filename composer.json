@@ -1,0 +1,29 @@
+{
+    "name": "agroviva/workist",
+    "description": "",
+    "type": "library",
+    "keywords": [
+      "library", "php", "php7"
+    ],
+    "require": {
+        "php": ">=7.1",
+        "wyndow/fuzzywuzzy": "^0.6.0",
+        "illuminate/routing": "^5.7",
+        "illuminate/database": "^5.7",
+        "illuminate/cache": "^5.7",
+        "illuminate/events": "^5.7"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Enver Morinaj",
+            "email": "emorinaj@agroviva.de"
+        }
+    ],
+    "autoload": {
+      "psr-4": {
+        "Workist\\": ""
+      }
+    },
+    "minimum-stability": "dev"
+}
