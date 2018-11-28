@@ -29,13 +29,23 @@ $router = new Router($events, $container);
 class Route
 {
 	public static $router;
+	public static $request;
 
     public static function __callStatic($name, $arguments) 
     {
     	return call_user_func_array(array(self::$router, $name), $arguments);
     }
+
+    public static function Close(){
+    	// Dispatch the request through the router
+		$response = self::$router->dispatch(self::$request);
+		// Send the response back to the browser
+		$response->send();
+
+    }
 }
 Route::$router =& $router;
+Route::$request =& $request;
 
 
 
@@ -55,10 +65,3 @@ Redirect::$redirect =& $redirect;
 // return $redirect->home();
 // return $redirect->back();
 // return $redirect->to('/');
-// Dispatch the request through the router
-
-// Load the routes
-require_once dirname(dirname(dirname(dirname(__FILE__)))).'/routes.php';
-$response = $router->dispatch($request);
-// Send the response back to the browser
-$response->send();
