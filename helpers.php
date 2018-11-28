@@ -28,16 +28,19 @@ $router = new Router($events, $container);
 
 class Route
 {
+	public static $router;
+
     public static function __callStatic($name, $arguments) 
     {
-    	global $router;
-    	return call_user_func_array(array($router, $name), $arguments);
+    	return call_user_func_array(array(self::$router, $name), $arguments);
     }
 }
 
+Route::$router =& $router;
+
 
 // Load the routes
-require_once './../../../routes.php';
+require_once dirname(dirname(dirname(dirname(__FILE__)))).'/routes.php';
 // Create the redirect instance
 $redirect = new Redirector(new UrlGenerator($router->getRoutes(), $request));
 // use redirect
