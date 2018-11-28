@@ -23,7 +23,10 @@
     "autoload": {
       "psr-4": {
         "Workist\\": ""
-      }
+      },
+      "files": [
+        "helpers.php"   
+      ]
     },
     "minimum-stability": "dev"
 }
