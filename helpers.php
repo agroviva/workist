@@ -37,7 +37,7 @@ class Route
 
 
 // Load the routes
-require_once './../../routes.php';
+require_once './../../../routes.php';
 // Create the redirect instance
 $redirect = new Redirector(new UrlGenerator($router->getRoutes(), $request));
 // use redirect
