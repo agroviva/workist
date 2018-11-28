@@ -35,19 +35,30 @@ class Route
     	return call_user_func_array(array(self::$router, $name), $arguments);
     }
 }
-
 Route::$router =& $router;
 
 
-// Load the routes
-require_once dirname(dirname(dirname(dirname(__FILE__)))).'/routes.php';
+
 // Create the redirect instance
 $redirect = new Redirector(new UrlGenerator($router->getRoutes(), $request));
+class Redirect
+{
+	public static $redirect;
+
+    public static function __callStatic($name, $arguments) 
+    {
+    	return call_user_func_array(array(self::$redirect, $name), $arguments);
+    }
+}
+Redirect::$redirect =& $redirect;
 // use redirect
 // return $redirect->home();
 // return $redirect->back();
 // return $redirect->to('/');
 // Dispatch the request through the router
+
+// Load the routes
+require_once dirname(dirname(dirname(dirname(__FILE__)))).'/routes.php';
 $response = $router->dispatch($request);
 // Send the response back to the browser
 $response->send();
