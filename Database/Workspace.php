@@ -16,6 +16,7 @@ class Workspace
                 $table->string('name', 60)->unique();
                 $table->integer('assigned_to');
                 $table->integer('created_by')->nullable();
+                $table->timestamps();
             });
         }
     }

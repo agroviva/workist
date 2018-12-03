@@ -15,6 +15,7 @@ class Logins
                 $table->increments('id')->unique();
                 $table->string('username', 60)->unique();
                 $table->string('password', 255);
+                $table->timestamps();
             });
         }
     }
