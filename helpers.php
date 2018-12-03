@@ -1,6 +1,6 @@
 <?php
 /**
- * Illuminate/Routing
+ * Illuminate/Routing.
  *
  * @source https://github.com/illuminate/routing
  * @contributor Muhammed Gufran
@@ -8,15 +8,15 @@
  * @contributor https://github.com/jwalton512
  * @contributor https://github.com/dead23angel
  */
-
 use Illuminate\Container\Container;
 use Illuminate\Events\Dispatcher;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Routing\Router;
 use Illuminate\Routing\UrlGenerator;
+
 // Create a service container
-$container = new Container;
+$container = new Container();
 // Create a request from server variables, and bind it to the container; optional
 $request = Request::capture();
 $container->instance('Illuminate\Http\Request', $request);
@@ -28,39 +28,37 @@ $router = new Router($events, $container);
 
 class Route
 {
-	public static $router;
-	public static $request;
+    public static $router;
+    public static $request;
 
-    public static function __callStatic($name, $arguments) 
+    public static function __callStatic($name, $arguments)
     {
-    	return call_user_func_array(array(self::$router, $name), $arguments);
+        return call_user_func_array([self::$router, $name], $arguments);
     }
 
-    public static function Close(){
-    	// Dispatch the request through the router
-		$response = self::$router->dispatch(self::$request);
-		// Send the response back to the browser
-		$response->send();
-
+    public static function Close()
+    {
+        // Dispatch the request through the router
+        $response = self::$router->dispatch(self::$request);
+        // Send the response back to the browser
+        $response->send();
     }
 }
-Route::$router =& $router;
-Route::$request =& $request;
-
-
+Route::$router = &$router;
+Route::$request = &$request;
 
 // Create the redirect instance
 $redirect = new Redirector(new UrlGenerator($router->getRoutes(), $request));
 class Redirect
 {
-	public static $redirect;
+    public static $redirect;
 
-    public static function __callStatic($name, $arguments) 
+    public static function __callStatic($name, $arguments)
     {
-    	return call_user_func_array(array(self::$redirect, $name), $arguments);
+        return call_user_func_array([self::$redirect, $name], $arguments);
     }
 }
-Redirect::$redirect =& $redirect;
+Redirect::$redirect = &$redirect;
 // use redirect
 // return $redirect->home();
 // return $redirect->back();
