@@ -6,7 +6,7 @@
       "library", "php", "php7"
     ],
     "require": {
-        "php": ">=7.1",
+        "php": ">=7.0",
         "wyndow/fuzzywuzzy": "^0.6.0",
         "illuminate/routing": "^5.7",
         "illuminate/database": "^5.7",
