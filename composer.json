@@ -22,7 +22,7 @@
     ],
     "autoload": {
       "psr-4": {
-        "Workist\\": ""
+        "Saaora\\": ""
       },
       "files": [
         "helpers.php"   
