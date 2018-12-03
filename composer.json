@@ -11,7 +11,8 @@
         "illuminate/routing": "^5.0",
         "illuminate/database": "^5.0",
         "illuminate/cache": "^5.0",
-        "illuminate/events": "^5.0"
+        "illuminate/events": "^5.0",
+        "illuminate/hashing": "5.0"
     },
     "license": "MIT",
     "authors": [

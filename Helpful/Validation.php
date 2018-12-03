@@ -16,6 +16,6 @@ class Validation
 		if (Str::length($workspace) > 60) {
 			return false;
 		}
-		return preg_match(self::WORKSPACE_REGEX, $workspace);
+		return preg_match(self::WORKSPACE_REGEX, $workspace) ? true : false;
 	}
 }
